@@ -17,10 +17,11 @@ sed -i "s/GRUB_TIMEOUT=[[:digit:]]/GRUB_TIMEOUT=1/g" /etc/default/grub
 grep 'GRUB_DISABLE_OS_PROBER' /etc/default/grub || echo 'GRUB_DISABLE_OS_PROBER=false' >> /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
-systemctl enable NetworkManager.service
-
 su - dan99 <<EOF
 	git clone https://aur.archlinux.org/yay.git
 	cd yay && makepkg -sri --noconfirm
 	rm -rf ~/yay
 EOF
+
+systemctl enable NetworkManager.service
+systemctl enable sshd.service
