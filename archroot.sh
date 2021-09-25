@@ -18,7 +18,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 systemctl enable NetworkManager.service
 
-sudo -u dan99 <<EOF
+su - dan99 <<EOF
 	git clone https://aur.archlinux.org/yay.git
 	cd yay && makepkg -sri --noconfirm
 	rm -rf ~/yay
